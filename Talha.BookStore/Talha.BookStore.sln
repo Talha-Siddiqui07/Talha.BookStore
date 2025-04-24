@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Talha.BookStore", "Talha.BookStore\Talha.BookStore.csproj", "{9E2EC84D-6664-4C38-9088-8B79DBCB446A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Talha.BookStore", "Talha.BookStore\Talha.BookStore.csproj", "{28A66168-4763-4BEA-9BCB-FD25F737892F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9E2EC84D-6664-4C38-9088-8B79DBCB446A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E2EC84D-6664-4C38-9088-8B79DBCB446A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E2EC84D-6664-4C38-9088-8B79DBCB446A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E2EC84D-6664-4C38-9088-8B79DBCB446A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28A66168-4763-4BEA-9BCB-FD25F737892F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28A66168-4763-4BEA-9BCB-FD25F737892F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28A66168-4763-4BEA-9BCB-FD25F737892F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28A66168-4763-4BEA-9BCB-FD25F737892F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {04EB1B2C-B0D1-47B7-A76F-7B97DB9006BA}
+		SolutionGuid = {EFFD1D10-F1C6-400B-BF56-5DED2099ED1B}
 	EndGlobalSection
 EndGlobal
