@@ -17,11 +17,8 @@ namespace Talha.BookStore
             //    await context.Response.WriteAsync("Hello from First middleware!\n");
             //    await next();
             //});
-            //app.Use(async (context, next) =>
-            //{
-            //    await context.Response.WriteAsync("Hello from Second middleware!\n");
-            //    await next();
-            //});
+
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -35,14 +32,6 @@ namespace Talha.BookStore
             //    endpoints.MapGet("/", async context =>
             //    {
             //        await context.Response.WriteAsync("Hello World!\n");
-            //    });
-            //});
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapGet("/Talha", async context =>
-            //    {
-            //        await context.Response.WriteAsync("Hello From Talha\n");
             //    });
             //});
         }
