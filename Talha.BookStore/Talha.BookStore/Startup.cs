@@ -5,6 +5,9 @@ namespace Talha.BookStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+#if DEBUG
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+#endif
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
