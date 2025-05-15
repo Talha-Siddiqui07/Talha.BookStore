@@ -3,23 +3,90 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <environment include="Development">
+		<link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+		@* <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" /> *@
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+			  asp-fallback-test-value="absolute"
+        rel="stylesheet" 
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" 
+        crossorigin="anonymous">
+
+    </environment>
     <link href="~/css/site.css" rel="stylesheet" />
-    <title>Talha's Book Store'</title>
+    <title>@ViewData["Title"] | Talha's Book Store'</title>
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center me-3" href="/">
+                    <img src="~/images/logo.png" alt="Logo" width="40" height="40" class="me-2 rounded-circle" asp-append-version="true">
+                    <span>Book Store</span>
+                </a>
 
-<script src="~/lib/jquery/jquery.js"></script>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-controller = "home" asp-action="Index" >Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="home" asp-action="AboutUs">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="home" asp-action="ContactUs">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="book" asp-action="GetAllBooks">Get all books</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" asp-controller="book" asp-action="AddNewBooks">Add new books</a>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex">
+                        <a class="btn btn-outline-light" href="#">Login</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <
+    <footer class="bg-secondary text-dark text-center py-3 mt-auto">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 MySite. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <environment include="Development">
+		<script src="~/lib/jquery/jquery.js"></script>
+    </environment>
+	<environment exclude="Development">
+		<script src="~/lib/jquery/jquery.min.js"></script>
+    </environment>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
+
+    @RenderSection("Greetings", required: false)
+
+</body>
 </html>
 
-<script>
-    $(document).ready(function () {
-        $("input[type='button']").click(function () {
-            alert("Hello Brothers and Their Sisters");
-        });
-    });
-</script>
+

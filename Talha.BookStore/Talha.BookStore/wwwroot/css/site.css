@@ -1,6 +1,23 @@
-﻿body {
-}
+﻿
 .img {
     height: 250px;
     width: 200px;
+}
+.jumbotron{
+    background-color: gray;
+}
+
+
+body, html {
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
 }

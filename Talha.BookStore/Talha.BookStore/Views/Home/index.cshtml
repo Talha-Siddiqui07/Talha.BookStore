@@ -1,31 +1,68 @@
 ﻿@{
-    Layout = "_Layout";
+	ViewData["Title"] = "Home Page";
 }
 
-<body class="container">
-    <h1 class="h1">Welcome to Talha's Book Store</h1>
-    <p>This is HomePage of our website. We are glad to have you here!</p>
-    <p>Current Date and Time is : @DateTime.Now</p>
+<section class="bg-secondary text-center py-3">
+    <div class="container">
+		<h1 class="jumbotron-heading">Welcome to Talha's Book Store</h1>
+		<p class="lead">This is the home page of our website. We are glad to have you here!</p>
+		<p>
+            <a href="/Home/AboutUs" class="btn btn-primary btn-outline-dark my-2">About Us</a>
+			<a href="/Home/ContactUs" class="btn btn-primary btn-outline-dark my-2">Contact Us</a>
+		</p>
+		<p>
+            <a class="btn btn-primary btn-outline-dark my-2">Search Books</a>
+        <p/>
+    </div>
+</section>
 
-    @{	 
-         var FirstName = "Talha"; 
-         var LastName = "Siddiqui"; 
-         var FullName = FirstName + " " + LastName;
-     }
-	<img src="~/images/my image.jpg" class="img" alt="My Image"/>
-    <p>My Full Name is : @FullName</p>
-    <p>I am inspiring to be a Software Engineer</p>
-    <p>My Email is : talhasiddique083@gmail.com</p>
+<div class="container mt-5">
+    <div class="row">
+        <h2>Top Sellers</h2>
+        <!-- Card 1 -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card Title 1</h5>
+                    <p class="card-text">This is a short description for card one.</p>
+                    <a href="#" class="btn btn-primary btn-outline-dark">Go somewhere</a>
+                </div>
+            </div>
+        </div>
 
-   @{
-    var age = 23;
+        <!-- Card 2 -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card Title 2</h5>
+                    <p class="card-text">This is a short description for card two.</p>
+                    <a href="#" class="btn btn-primary btn-outline-dark">Go somewhere</a>
+                </div>
+            </div>
+        </div>
 
-     <p>I am @(age > 21 ? "an Adult" : "a Youngester")</p>
-   }
-   <input type="button" value="Click me" class="btn btn-dark" />
+        <!-- Card 3 -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card Title 3</h5>
+                    <p class="card-text">This is a short description for card three.</p>
+                    <a href="#" class="btn btn-primary btn-outline-dark">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
-</body>
-
-
-
+@section Greetings{
+    <script>
+        $(document).ready(function () {
+                // alert("Hello Brothers and Their Sisters");
+        })
+    </script>
+}

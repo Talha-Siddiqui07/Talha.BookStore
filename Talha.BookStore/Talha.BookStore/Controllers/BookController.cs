@@ -16,13 +16,24 @@ namespace Talha.BookStore.Controllers
             var data = _bookRepositry.GetAllBooks();
             return View(data);
         }
-        public BookModel GetBook(int id)
+        public ViewResult GetBook(int id)
         {
-            return _bookRepositry.GetBookById(id);
+            var data = _bookRepositry.GetBookById(id);
+
+            return View(data);
         }
         public List<BookModel> searchBook(string title, string author)
         {
             return _bookRepositry.SearchBooks(title, author);
+        }
+        public ViewResult AddNewBooks()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ViewResult AddNewBooks(BookModel bookModel)
+        {
+            return View();
         }
     }
 }

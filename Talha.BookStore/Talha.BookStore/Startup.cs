@@ -28,6 +28,9 @@ namespace Talha.BookStore
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "bookapp/{controller=Home}/{action=Index}/{id?}");
             });
 
             //app.UseEndpoints(endpoints =>
