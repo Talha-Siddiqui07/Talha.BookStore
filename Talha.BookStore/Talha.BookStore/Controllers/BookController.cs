@@ -7,9 +7,9 @@ namespace Talha.BookStore.Controllers
     public class BookController : Controller
     {
         private readonly BookRepositry _bookRepositry = null;
-        public BookController()
+        public BookController(BookRepositry bookRepositry)
         {
-            _bookRepositry = new BookRepositry();
+            _bookRepositry = bookRepositry;
         }
         public ViewResult GetAllBooks()
         {
@@ -26,13 +26,20 @@ namespace Talha.BookStore.Controllers
         {
             return _bookRepositry.SearchBooks(title, author);
         }
-        public ViewResult AddNewBooks()
+        public ViewResult AddNewBooks(bool isSuccess = false, int bookid = 0)
         {
+            ViewBag.isSuccess = isSuccess;
+            ViewBag.bookid = bookid;    
             return View();
         }
         [HttpPost]
-        public ViewResult AddNewBooks(BookModel bookModel)
+        public IActionResult AddNewBooks(BookModel bookModel)
         {
+            int id = _bookRepositry.AddNewBook(bookModel);
+            if (id > 0)
+            {
+                return RedirectToAction(nameof(AddNewBooks), new {isSuccess = true, bookid = id});
+            }
             return View();
         }
     }

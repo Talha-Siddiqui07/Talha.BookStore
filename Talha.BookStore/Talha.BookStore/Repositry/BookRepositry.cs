@@ -1,10 +1,39 @@
 ﻿using System.Reflection.Metadata.Ecma335;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Talha.BookStore.Data;
 using Talha.BookStore.Models;
 
 namespace Talha.BookStore.Repositry
 {
     public class BookRepositry
     {
+
+        private readonly BookStoreContext _context = null;
+
+        public BookRepositry(BookStoreContext context)
+        {
+            _context = context;
+        }
+
+        public int AddNewBook(BookModel model)
+        {
+            var newbook = new Books()
+            {
+                Title = model.Title,
+                Author = model.Author,
+                category = model.category,
+                language = model.language,
+                Description = model.Description,
+                totalpages = model.totalpages,
+                createdon = DateTime.UtcNow,
+            };
+
+            _context.Books.Add(newbook);
+            _context.SaveChanges();
+
+            return newbook.Id;
+        }
+        
         public List<BookModel> GetAllBooks()
         {
             return DataSourse();

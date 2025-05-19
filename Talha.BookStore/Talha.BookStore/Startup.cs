@@ -1,13 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using Talha.BookStore.Data;
+using Talha.BookStore.Repositry;
+
 namespace Talha.BookStore
 {
     public class Startup
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<BookStoreContext>(options => options.UseSqlServer("Server=TALHAH-SKILLED-\\SQLEXPRESS;Database=BookStore;Integrated Security=True;Encrypt=False;TrustServerCertificate=True;"));
+
             services.AddControllersWithViews();
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
 #endif
+
+            services.AddScoped<BookRepositry, BookRepositry>();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
