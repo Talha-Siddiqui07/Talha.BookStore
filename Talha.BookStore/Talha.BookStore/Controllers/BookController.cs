@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Talha.BookStore.Models;
 using Talha.BookStore.Repositry;
 
@@ -11,14 +12,14 @@ namespace Talha.BookStore.Controllers
         {
             _bookRepositry = bookRepositry;
         }
-        public ViewResult GetAllBooks()
+        public async Task<ViewResult> GetAllBooks()
         {
-            var data = _bookRepositry.GetAllBooks();
+            var data = await _bookRepositry.GetAllBooks();
             return View(data);
         }
-        public ViewResult GetBook(int id)
+        public async Task<ViewResult> GetBook(int id)
         {
-            var data = _bookRepositry.GetBookById(id);
+            var data = await _bookRepositry.GetBookById(id);
 
             return View(data);
         }
@@ -33,9 +34,9 @@ namespace Talha.BookStore.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddNewBooks(BookModel bookModel)
+        public async Task<IActionResult> AddNewBooks(BookModel bookModel)
         {
-            int id = _bookRepositry.AddNewBook(bookModel);
+            int id = await _bookRepositry.AddNewBook(bookModel);
             if (id > 0)
             {
                 return RedirectToAction(nameof(AddNewBooks), new {isSuccess = true, bookid = id});

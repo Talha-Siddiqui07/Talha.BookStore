@@ -1,4 +1,6 @@
 ﻿using System.Reflection.Metadata.Ecma335;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Talha.BookStore.Data;
 using Talha.BookStore.Models;
@@ -15,7 +17,7 @@ namespace Talha.BookStore.Repositry
             _context = context;
         }
 
-        public int AddNewBook(BookModel model)
+        public async Task<int> AddNewBook(BookModel model)
         {
             var newbook = new Books()
             {
@@ -28,19 +30,54 @@ namespace Talha.BookStore.Repositry
                 createdon = DateTime.UtcNow,
             };
 
-            _context.Books.Add(newbook);
-            _context.SaveChanges();
+            await _context.Books.AddAsync(newbook);
+            await _context.SaveChangesAsync();
 
             return newbook.Id;
         }
         
-        public List<BookModel> GetAllBooks()
+        public async Task<List<BookModel>> GetAllBooks()
         {
-            return DataSourse();
+            var books = new List<BookModel>();
+            var allBooks = await _context.Books.ToListAsync();
+            if (allBooks?.Any() == true)
+            {
+                foreach (var book in allBooks)
+                {
+                    books.Add(new BookModel()
+                    {
+                        Author = book.Author,
+                        Title = book.Title,
+                        Id = book.Id,
+                        category = book.category,
+                        totalpages = book.totalpages,
+                        Description = book.Description,
+                        language = book.language
+                    });
+                }
+            }
+            return books;
         }
-        public BookModel GetBookById(int id)
+        public async Task<BookModel> GetBookById(int id)
         {
-            return DataSourse().Where(x => x.Id == id).FirstOrDefault();
+            var book = await _context.Books.FindAsync(id);
+            if (book != null)
+            {
+                var bookdetail = new BookModel()
+                {
+                    Author = book.Author,
+                    Title = book.Title,
+                    Id = book.Id,
+                    category = book.category,
+                    totalpages = book.totalpages,
+                    Description = book.Description,
+                    language = book.language
+                };
+                return bookdetail;
+                
+            }
+            return null;
+
         }
         public List<BookModel> SearchBooks(string title, string author)
         {
