@@ -26,7 +26,7 @@ namespace Talha.BookStore.Repositry
                 category = model.category,
                 language = model.language,
                 Description = model.Description,
-                totalpages = model.totalpages,
+                totalpages = model.totalpages.HasValue ? model.totalpages.Value : 0,
                 createdon = DateTime.UtcNow,
             };
 

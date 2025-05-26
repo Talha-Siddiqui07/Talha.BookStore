@@ -36,11 +36,15 @@ namespace Talha.BookStore.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNewBooks(BookModel bookModel)
         {
-            int id = await _bookRepositry.AddNewBook(bookModel);
-            if (id > 0)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(AddNewBooks), new {isSuccess = true, bookid = id});
+                int id = await _bookRepositry.AddNewBook(bookModel);
+                if (id > 0)
+                {
+                    return RedirectToAction(nameof(AddNewBooks), new { isSuccess = true, bookid = id });
+                }
             }
+
             return View();
         }
     }
