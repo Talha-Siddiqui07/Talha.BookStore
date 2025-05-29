@@ -17,6 +17,8 @@
 			</div>
 		}
 
+
+
 		<div class="form-group">
 			<label asp-for="Title"></label>
 			<input asp-for="Title" class="form-control" />
@@ -41,7 +43,9 @@
 
 		<div class="form-group">
 			<label asp-for="language"></label>
-			<input asp-for="language" class="form-control" />
+			<select asp-for="language" class="form-control" asp-items = "ViewBag.languages" required>
+				<option value="">Select a Language</option>
+			</select>
 		</div>
 
 		<div class="form-group">
@@ -53,5 +57,8 @@
 		<div class="form-group">
 			<button type="submit" value="Add Book" class="btn btn-primary">Submit</button>
 		</div>
+
+		
+
 	</form>
 </div>

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -21,7 +22,9 @@ namespace Talha.BookStore.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     category = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     language = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    totalpages = table.Column<int>(type: "int", nullable: false)
+                    totalpages = table.Column<int>(type: "int", nullable: false),
+                    createdon = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    updatedon = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

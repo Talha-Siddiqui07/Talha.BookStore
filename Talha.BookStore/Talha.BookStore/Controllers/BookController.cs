@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Talha.BookStore.Models;
 using Talha.BookStore.Repositry;
 
@@ -29,6 +30,8 @@ namespace Talha.BookStore.Controllers
         }
         public ViewResult AddNewBooks(bool isSuccess = false, int bookid = 0)
         {
+            ViewBag.languages = new SelectList(GetLanguage(), "Id", "text");
+
             ViewBag.isSuccess = isSuccess;
             ViewBag.bookid = bookid;    
             return View();
@@ -45,7 +48,23 @@ namespace Talha.BookStore.Controllers
                 }
             }
 
+            ViewBag.languages = new SelectList(GetLanguage(), "Id", "text");
+
             return View();
+        }
+
+        private List<LanguageModel> GetLanguage()
+        {
+            return new List<LanguageModel>()
+            {
+                new LanguageModel() { Id = 1, text = "English" },
+                new LanguageModel() { Id = 2, text = "Urdu" },
+                new LanguageModel() { Id = 3, text = "Arabic" },
+                new LanguageModel() { Id = 4, text = "French" },
+                new LanguageModel() { Id = 5, text = "Spanish" },
+                new LanguageModel() { Id = 6, text = "Japanese" },
+                new LanguageModel() { Id = 7, text = "German" }
+            };
         }
     }
 }
